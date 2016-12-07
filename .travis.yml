@@ -17,6 +17,8 @@ deploy:
   api_key:
     secure: RcxI40G4FuwB07lIfOFZHm3r3kvP8qix3kaaljzXm+VXYYfP2MgmeCQmVEhjs/5kZd8trCC0A6vk/qHAp0Cxfw3MMty6LLQNzFAqpdn/bfz7KXkAgOxsxhHtwiLnYxcSLyIIs+3WE9rhEFO7U8I6HkJKdptVpQR9chToRCCiM8OBreLuXtLvgVMeXZjXLTF7wsQj8wn6pegmXJ21P3m3fIO4blHNUXJdETK8PCjCXnHAigBaf779CH7P8t9Ex59eCZ/hyZ2s3L1HE/DYvs4z87vF8zIBoPX+cot2lYC3chWLNAdg5ARDSoHn2hionYA08E6cO23nSDqgVHTEalNCrMCgsJjLAe/kDxHZ3kCR/FIaau5pEoaS2M/zJoLSawdbSQ4S0lEjvil11Z7FRWI+nXrFjaVnpm6lP+71WiHDuRby8UmXI/B/C1UjLbf6fW3yBdyJqva2iP4v2+mAqY2Nv62BsaGd/JDKH4pumiyMthkJoXbdUDf4L0njRyHTOKUtLUeItfRo4+4FxhMmVznI4QDkB3yK2fw61JAw6Ccm0YR82rF/1MYVi2G5Zb+2f5Nnvjl5pBEnC3zD+yZdtqTAu66oh4PICo0Hc0WCY44z6ZILQAIbhwQ47JGAPhO0LOCu+ATSmGLFzg4ecIufI1WvyQlRLyOnYvSsZtaFdUutPMU=
   file: registrator-$TRAVIS_TAG
+  skip_cleanup: true 
   on:
+    tags: true
     repo: voyages-sncf-technologies/strowgr-registrator
     branch: 0.2.x
