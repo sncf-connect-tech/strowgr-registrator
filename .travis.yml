@@ -1,22 +1,22 @@
 language: go
 go:
-  - 1.7
+- 1.7
 before_install:
-  - go get github.com/mattn/goveralls
+- go get github.com/mattn/goveralls
 before_script:
-  - go vet registrator
-  - go test registrator
+- go vet registrator
+- go test registrator
 script:
-  - go build -o "registrator-$(cat $TRAVIS_BUILD_DIR/VERSION)" -ldflags "-X main.Version=$(cat $TRAVIS_BUILD_DIR/VERSION) -X GitCommit=$(git rev-parse --short HEAD) -X GitBranch=$(git rev-parse --abbrev-ref HEAD)" registrator
+- go build -o "registrator-$(cat $TRAVIS_BUILD_DIR/VERSION)" -ldflags "-X main.Version=$(cat
+  $TRAVIS_BUILD_DIR/VERSION) -X GitCommit=$(git rev-parse --short HEAD) -X GitBranch=$(git
+  rev-parse --abbrev-ref HEAD)" registrator
 install:
-  - export GOPATH="${TRAVIS_BUILD_DIR}"
+- export GOPATH="${TRAVIS_BUILD_DIR}"
 deploy:
   provider: releases
   api_key:
-    secure: N8vJT1UCWSCDNLY4LwdfCHTeeWqqcOVpuL/c+gjHdgeNXCqtyn496t7/L1IgTCcQPjIL9vXiFQ0ubLa9/xBjcG2hor++9Yi9pvqqyZZldhiaLi6lI2wOfWO7METZgcP1U9+Sv5ZfzAHOp3I2kaaVJMedZQnbuo2kKFbCE4o8cz9ItmaDUxRHoHFwzCpOSDeyCV9Mk2RweX0AOnO6MfxTPZILj9IF4+QhzywmT0MJN5vaBLgr+SCPI5QgFdNIgIL+fwgTIzmRua0b2ajW6MAD/jgDAHavo92W1TbS27pwz4t9q/v94vDwjCIGEuYaysQqijwZyVNxhZwBuFN9CWI0rszwZP4jO37jc4VpdBa2/czY37a7p37le+cVpwavqrESi+iCek+nZzED1pyjyxtPFbML52Mqw8tUPX8GfveWBtZwNB6wq5+7XZT37gyIEkZaYdrdvfEpFmVVLmIyEGEBAYgywZ48DI3QAI7SIiRHUJlcRlB+zPN/wg/EKawiOk/7Bdr4aWUsNPSRQUBUxIj+frmwKNXHvlRSJzER4oQY6rTlwDcvDzKQTT7vxfcd5ZVZXgwKwnEGosyXGhc0o3ZwYzZGhbQGh8HVEu9FKgVtQXCjz2J38SMsP0qJRk8ug5bNL6dxH/oNziWzPOvldOHbs/ex9uTSygCvS7hcB35800A=
-  file: "registrator-$TRAVIS_TAG"
-  skip_cleanup: true
+    secure: RcxI40G4FuwB07lIfOFZHm3r3kvP8qix3kaaljzXm+VXYYfP2MgmeCQmVEhjs/5kZd8trCC0A6vk/qHAp0Cxfw3MMty6LLQNzFAqpdn/bfz7KXkAgOxsxhHtwiLnYxcSLyIIs+3WE9rhEFO7U8I6HkJKdptVpQR9chToRCCiM8OBreLuXtLvgVMeXZjXLTF7wsQj8wn6pegmXJ21P3m3fIO4blHNUXJdETK8PCjCXnHAigBaf779CH7P8t9Ex59eCZ/hyZ2s3L1HE/DYvs4z87vF8zIBoPX+cot2lYC3chWLNAdg5ARDSoHn2hionYA08E6cO23nSDqgVHTEalNCrMCgsJjLAe/kDxHZ3kCR/FIaau5pEoaS2M/zJoLSawdbSQ4S0lEjvil11Z7FRWI+nXrFjaVnpm6lP+71WiHDuRby8UmXI/B/C1UjLbf6fW3yBdyJqva2iP4v2+mAqY2Nv62BsaGd/JDKH4pumiyMthkJoXbdUDf4L0njRyHTOKUtLUeItfRo4+4FxhMmVznI4QDkB3yK2fw61JAw6Ccm0YR82rF/1MYVi2G5Zb+2f5Nnvjl5pBEnC3zD+yZdtqTAu66oh4PICo0Hc0WCY44z6ZILQAIbhwQ47JGAPhO0LOCu+ATSmGLFzg4ecIufI1WvyQlRLyOnYvSsZtaFdUutPMU=
+  file: registrator-$TRAVIS_TAG
   on:
-    tags: true      
     repo: voyages-sncf-technologies/strowgr-registrator
     branch: 0.2.x
