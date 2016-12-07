@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/voyages-sncf-technologies/strowgr-registrator.svg?branch=0.2.x)](https://travis-ci.org/voyages-sncf-technologies/strowgr-registrator)
+
 ## Naming strategy
 
 Two naming strategy are available
