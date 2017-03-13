@@ -19,19 +19,19 @@ package main
 import (
 	"github.com/docker/engine-api/types"
 	"github.com/docker/engine-api/types/container"
+	registrator "github.com/voyages-sncf-technologies/strowgr-registrator/internal"
 	"reflect"
-	registrator "registrator/internal"
 	"runtime"
 	"testing"
 )
 
-func instanceFixture() *registrator.Instance {
+func instanceFixture() *registrator.RegisterCommand {
 	instance := registrator.NewInstance()
-	instance.App = "Test"
-	instance.Platform = "TST"
-	instance.Service = "BACK"
-	instance.Port = "1234"
-	instance.Ip = "1.2.3.4"
+	instance.Header.Application = "Test"
+	instance.Header.Platform = "TST"
+	instance.Server.BackendId = "BACK"
+	instance.Server.Port = "1234"
+	instance.Server.Ip = "1.2.3.4"
 
 	return instance
 }

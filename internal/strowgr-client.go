@@ -36,21 +36,35 @@ type Instance struct {
 	Context  map[string]string `json:"context"`
 }
 
-func NewInstance() *Instance {
-	return &Instance{
-		Context: make(map[string]string),
+type RegisterCommand struct {
+	Header struct {
+		Application string `json:"application"`
+		Platform    string `json:"platform"`
+	}`json:"header"`
+	Server struct {
+		Id        string `json:"id"`
+		BackendId string `json:"backendId"`
+		Ip        string `json:"ip"`
+		Port      string            `json:"port"`
+		Context   map[string]string `json:"context"`
 	}
 }
 
-func (instance *Instance) Register(adminUrl string) {
+func NewInstance() *RegisterCommand {
+	rc := &RegisterCommand{}
+	rc.Server.Context = make(map[string]string)
+	return rc;
+}
+
+func (instance *RegisterCommand) Register(nsqdUrl string) {
 	log.WithFields(log.Fields{
-		"id":          instance.Id,
-		"application": instance.App,
-		"platform":    instance.Platform,
-		"service":     instance.Service,
+		"id":          instance.Server.Id,
+		"application": instance.Header.Application,
+		"platform":    instance.Header.Platform,
+		"service":     instance.Server.BackendId,
 	}).Info("Register")
 
-	var url = fmt.Sprintf("%s/api/entrypoints/%s/%s/backend/%s/register-server", adminUrl, instance.App, instance.Platform, instance.Service)
+	var url = fmt.Sprintf("%s/pub?topic=register_server", nsqdUrl)
 	json, _ := json.Marshal(instance)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(json))
 	req.Header.Set("Content-Type", "application/json")

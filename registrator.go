@@ -26,9 +26,9 @@ import (
 	eventtypes "github.com/docker/engine-api/types/events"
 	"github.com/docker/engine-api/types/filters"
 	events "github.com/vdemeester/docker-events"
+	registrator "github.com/voyages-sncf-technologies/strowgr-registrator/internal"
 	"golang.org/x/net/context"
 	"os"
-	registrator "registrator/internal"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ const (
 	ID_NAMING_STRATEGY = "registrator.id_generator"
 )
 
-type NamingStrategy func(info types.ContainerJSON, instance *registrator.Instance) string
+type NamingStrategy func(info types.ContainerJSON, instance *registrator.RegisterCommand) string
 
 func init() {
 	log.SetFormatter(new(log.TextFormatter))
@@ -120,14 +120,12 @@ func main() {
 					log.WithField("port", private_port).Debug("Analyze container")
 
 					instance := registrator.NewInstance()
-					instance.App = getMetadata(info.Config, APPLICATION_LABEL)
-					instance.Platform = getMetadata(info.Config, PLATFORM_LABEL)
-					instance.Service = getMetadata(info.Config, serviceLabel)
-					instance.Port = public_port
-					instance.Ip = address
-					id := namingStrategy(info, instance)
-					instance.Hostname = id
-					instance.Id = id
+					instance.Header.Application = getMetadata(info.Config, APPLICATION_LABEL)
+					instance.Header.Platform = getMetadata(info.Config, PLATFORM_LABEL)
+					instance.Server.BackendId = getMetadata(info.Config, serviceLabel)
+					instance.Server.Port = public_port
+					instance.Server.Ip = address
+					instance.Server.Id = namingStrategy(info, instance)
 					instance.Register(adminUrl)
 				}
 			}
@@ -182,10 +180,10 @@ func getNamingStrategy(config *container.Config) NamingStrategy {
 	}
 }
 
-func defaultNamingStrategy(info types.ContainerJSON, instance *registrator.Instance) string {
-	return strings.Replace(instance.Ip, ".", "_", -1) + "_" + strings.Replace(info.Name, "/", "_", -1) + "_" + instance.Port
+func defaultNamingStrategy(info types.ContainerJSON, instance *registrator.RegisterCommand) string {
+	return strings.Replace(instance.Server.Ip, ".", "_", -1) + "_" + strings.Replace(info.Name, "/", "_", -1) + "_" + instance.Server.Port
 }
 
-func containerNamingStrategy(info types.ContainerJSON, instance *registrator.Instance) string {
-	return info.Name + "_" + instance.Service
+func containerNamingStrategy(info types.ContainerJSON, instance *registrator.RegisterCommand) string {
+	return info.Name + "_" + instance.Server.BackendId
 }
