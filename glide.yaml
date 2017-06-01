@@ -18,3 +18,7 @@ import:
   version: ^2.6.1
   subpackages:
   - digestset
+- package: github.com/docker/go-connections
+  version: ^0.2.1
+  subpackages:
+  - nat

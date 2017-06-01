@@ -1,5 +1,5 @@
-hash: e277ebbfc695a14a9c16133292127f2021f6a1e7af1e24ab9b96c3f28859ebeb
-updated: 2017-06-01T15:31:51.593519155Z
+hash: 51e512f655a2bd9de3ae48d92f6418d51a3b4bdb0ea6ccb6a29e75ffce7f383c
+updated: 2017-06-01T15:41:18.165079234Z
 imports:
 - name: github.com/docker/distribution
   version: a25b9ef0c9fe242ac04bb20d3a028442b7d266b6
@@ -13,6 +13,10 @@ imports:
   - types/container
   - types/events
   - types/filters
+- name: github.com/docker/go-connections
+  version: 990a1a1a70b0da4c4cb70e117971a4f0babfbf1a
+  subpackages:
+  - nat
 - name: github.com/Sirupsen/logrus
   version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: github.com/vdemeester/docker-events
