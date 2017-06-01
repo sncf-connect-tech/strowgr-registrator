@@ -14,3 +14,7 @@ import:
 - package: golang.org/x/net
   subpackages:
   - context
+- package: github.com/docker/distribution
+  version: ^2.6.1
+  subpackages:
+  - digestset

@@ -1,43 +1,18 @@
-hash: 085589cba8ebf26e5fdad2ddecb7bce4539ebcacb58c4e2bde35bfa1da90cf68
-updated: 2017-06-01T15:16:49.281546201Z
+hash: e277ebbfc695a14a9c16133292127f2021f6a1e7af1e24ab9b96c3f28859ebeb
+updated: 2017-06-01T15:31:51.593519155Z
 imports:
 - name: github.com/docker/distribution
-  version: 1e2f10eb65743fed02f573d31a4587de09afb20e
+  version: a25b9ef0c9fe242ac04bb20d3a028442b7d266b6
   subpackages:
   - digestset
-  - reference
 - name: github.com/docker/engine-api
   version: 3d1601b9d2436a70b0dfc045a23f6503d19195df
   subpackages:
   - client
-  - client/transport
-  - client/transport/cancellable
   - types
-  - types/blkiodev
   - types/container
   - types/events
   - types/filters
-  - types/network
-  - types/reference
-  - types/registry
-  - types/strslice
-  - types/swarm
-  - types/time
-  - types/versions
-- name: github.com/docker/go-connections
-  version: e15c02316c12de00874640cd76311849de2aeed5
-  subpackages:
-  - nat
-  - sockets
-  - tlsconfig
-- name: github.com/docker/go-units
-  version: 0dadbb0345b35ec7ef35e228dabb8de89a65bf52
-- name: github.com/Microsoft/go-winio
-  version: f533f7a102197536779ea3a8cb881d639e21ec5a
-- name: github.com/opencontainers/go-digest
-  version: eaa60544f31ccf3b0653b1a118b76d33418ff41b
-- name: github.com/pkg/errors
-  version: c605e284fe17294bda444b34710735b29d1a9d90
 - name: github.com/Sirupsen/logrus
   version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: github.com/vdemeester/docker-events
@@ -46,10 +21,8 @@ imports:
   version: 3da985ce5951d99de868be4385f21ea6c2b22f24
   subpackages:
   - context
-  - proxy
 - name: golang.org/x/sys
   version: b90f89a1e7a9c1f6b918820b3daa7f08488c8594
   subpackages:
   - unix
-  - windows
 testImports: []
