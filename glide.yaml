@@ -22,3 +22,9 @@ import:
   version: ^0.2.1
   subpackages:
   - nat
+- package: github.com/docker/go-units
+  version: ^0.3.1
+- package: github.com/opencontainers/runc
+  version: ^1.0.0-rc3
+  subpackages:
+  - libcontainer/user

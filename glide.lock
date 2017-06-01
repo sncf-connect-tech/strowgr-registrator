@@ -1,5 +1,5 @@
-hash: 51e512f655a2bd9de3ae48d92f6418d51a3b4bdb0ea6ccb6a29e75ffce7f383c
-updated: 2017-06-01T15:41:18.165079234Z
+hash: 79d2f458c07c389ec0ae2b0bd2c88c29d0bc4ad1b947ae250a6aba1cca42e657
+updated: 2017-06-01T15:50:53.347886627Z
 imports:
 - name: github.com/docker/distribution
   version: a25b9ef0c9fe242ac04bb20d3a028442b7d266b6
@@ -17,6 +17,12 @@ imports:
   version: 990a1a1a70b0da4c4cb70e117971a4f0babfbf1a
   subpackages:
   - nat
+- name: github.com/docker/go-units
+  version: f2d77a61e3c169b43402a0a1e84f06daf29b8190
+- name: github.com/opencontainers/runc
+  version: 75f8da7c889acc4509a0cf6f0d3a8f9584778375
+  subpackages:
+  - libcontainer/user
 - name: github.com/Sirupsen/logrus
   version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: github.com/vdemeester/docker-events
