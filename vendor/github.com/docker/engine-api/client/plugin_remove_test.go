@@ -10,8 +10,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/docker/engine-api/types"
-
 	"golang.org/x/net/context"
 )
 
@@ -20,7 +18,7 @@ func TestPluginRemoveError(t *testing.T) {
 		transport: newMockClient(nil, errorMock(http.StatusInternalServerError, "Server error")),
 	}
 
-	err := client.PluginRemove(context.Background(), "plugin_name", types.PluginRemoveOptions{})
+	err := client.PluginRemove(context.Background(), "plugin_name")
 	if err == nil || err.Error() != "Error response from daemon: Server error" {
 		t.Fatalf("expected a Server Error, got %v", err)
 	}
@@ -44,7 +42,7 @@ func TestPluginRemove(t *testing.T) {
 		}),
 	}
 
-	err := client.PluginRemove(context.Background(), "plugin_name", types.PluginRemoveOptions{})
+	err := client.PluginRemove(context.Background(), "plugin_name")
 	if err != nil {
 		t.Fatal(err)
 	}

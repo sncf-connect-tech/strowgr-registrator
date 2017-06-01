@@ -1,0 +1,16 @@
+package: github.com/voyages-sncf-technologies/strowgr-registrator
+import:
+- package: github.com/Sirupsen/logrus
+  version: ~0.11.5
+- package: github.com/vdemeester/docker-events
+- package: github.com/docker/engine-api
+  version: ^0.4.0
+  subpackages:
+  - client
+  - types
+  - types/container
+  - types/events
+  - types/filters
+- package: golang.org/x/net
+  subpackages:
+  - context
