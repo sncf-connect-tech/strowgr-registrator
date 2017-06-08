@@ -194,5 +194,5 @@ func defaultNamingStrategy(info types.ContainerJSON, instance *registrator.Regis
 }
 
 func containerNamingStrategy(info types.ContainerJSON, instance *registrator.RegisterCommand) string {
-	return strings.Replace(info.Name, "/", "_", -1) + "_" + instance.Server.BackendId
+	return strings.Replace(info.Name, "/", "", -1) + "_" + instance.Server.BackendId
 }
