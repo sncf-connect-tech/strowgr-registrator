@@ -103,13 +103,13 @@ func main() {
 					return
 				}
 
-				isNetHost := info.NetworkSettings.Networks != nil &&  info.NetworkSettings.Networks.host != nil
+				isNetHost := info.NetworkSettings.Networks != nil &&  info.NetworkSettings.Networks["host"] != nil
 
 				for exposedPort, _ := range info.Config.ExposedPorts {
 					private_port := exposedPort.Port() + "_" + exposedPort.Proto()
 					public_ports := info.NetworkSettings.Ports[exposedPort]
 
-					if ! isNetNost && ( public_ports == nil || len(public_ports) == 0 ){
+					if ! isNetHost && ( public_ports == nil || len(public_ports) == 0 ){
 						log.WithField("private_port", private_port).Debug("Port not published")
 						continue
 					}
