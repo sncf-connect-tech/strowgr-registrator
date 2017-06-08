@@ -119,7 +119,13 @@ func main() {
 						log.WithField("container", info.Name).WithField("label", serviceLabel).Debug("Label is missing")
 						continue
 					}
-					public_port := public_ports[0].HostPort
+
+					var public_port string
+					if isNetHost {
+						public_port = exposedPort.Port()
+					}else{
+						public_port = public_ports[0].HostPort
+					}
 					log.WithField("port", private_port).Debug("Analyze container")
 
 					instance := registrator.NewInstance()
