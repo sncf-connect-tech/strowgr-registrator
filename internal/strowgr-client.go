@@ -47,7 +47,7 @@ type RegisterCommand struct {
 		Ip        string `json:"ip"`
 		Port      string            `json:"port"`
 		Context   map[string]string `json:"context"`
-	}
+	} `json:"server"`
 }
 
 func NewInstance() *RegisterCommand {
